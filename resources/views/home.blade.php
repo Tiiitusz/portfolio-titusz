@@ -65,92 +65,15 @@
                 </p>
             </div>
 
-            @php
-                $dummyProjects = [
-                    [
-                        'title' => 'Aurora Analytics Dashboard',
-                        'description' => 'A data-heavy admin dashboard with real-time charts, alerts, and export features.',
-                        'url' => '/projects/aurora-analytics-dashboard',
-                        'image' => 'https://picsum.photos/seed/aurora-dashboard/460/260',
-                    ],
-                    [
-                        'title' => 'Nomad Travel Planner',
-                        'description' => 'A trip-building app that combines itinerary mapping, budget tracking, and booking notes.',
-                        'url' => '/projects/nomad-travel-planner',
-                        'image' => 'https://picsum.photos/seed/nomad-planner/460/260',
-                    ],
-                    [
-                        'title' => 'Pulse Fitness Tracker',
-                        'description' => 'A mobile-first platform for workout logging, progress streaks, and trainer messaging.',
-                        'url' => '/projects/pulse-fitness-tracker',
-                        'image' => 'https://picsum.photos/seed/pulse-fitness/460/260',
-                    ],
-                    [
-                        'title' => 'Civic Service Portal',
-                        'description' => 'An appointment and request system for municipal services with status updates for residents.',
-                        'url' => '/projects/civic-service-portal',
-                        'image' => 'https://picsum.photos/seed/civic-portal/460/260',
-                    ],
-                    [
-                        'title' => 'Studio Booking Suite',
-                        'description' => 'A scheduling suite for creative studios with calendar sync, invoices, and package management.',
-                        'url' => '/projects/studio-booking-suite',
-                        'image' => 'https://picsum.photos/seed/studio-booking/460/260',
-                    ],
-                    [
-                        'title' => 'FreshCart Grocery App',
-                        'description' => 'A streamlined ecommerce experience for grocery delivery with smart substitutions and reorder lists.',
-                        'url' => '/projects/freshcart-grocery-app',
-                        'image' => 'https://picsum.photos/seed/freshcart-app/460/260',
-                    ],
-                    [
-                        'title' => 'Event Horizon Tickets',
-                        'description' => 'A ticketing platform with tiered access, QR check-in, and host-level attendance analytics.',
-                        'url' => '/projects/event-horizon-tickets',
-                        'image' => 'https://picsum.photos/seed/event-horizon/460/260',
-                    ],
-                    [
-                        'title' => 'Atlas Real Estate CRM',
-                        'description' => 'A sales and lead tracking CRM tailored for property agents and agency-level reporting.',
-                        'url' => '/projects/atlas-real-estate-crm',
-                        'image' => 'https://picsum.photos/seed/atlas-crm/460/260',
-                    ],
-                    [
-                        'title' => 'Mentor Connect Platform',
-                        'description' => 'A mentoring hub with profile matching, session notes, and milestone-based learning plans.',
-                        'url' => '/projects/mentor-connect-platform',
-                        'image' => 'https://picsum.photos/seed/mentor-connect/460/260',
-                    ],
-                    [
-                        'title' => 'FleetOps Logistics Hub',
-                        'description' => 'A logistics control center for dispatch, route optimization, and delivery proof management.',
-                        'url' => '/projects/fleetops-logistics-hub',
-                        'image' => 'https://picsum.photos/seed/fleetops-hub/460/260',
-                    ],
-                    [
-                        'title' => 'Glacier Finance UI Kit',
-                        'description' => 'A design-to-code component library for fintech onboarding flows and account management tools.',
-                        'url' => '/projects/glacier-finance-ui-kit',
-                        'image' => 'https://picsum.photos/seed/glacier-finance/460/260',
-                    ],
-                    [
-                        'title' => 'Cinema Club Membership',
-                        'description' => 'A membership web app for cinemas with loyalty points, seat perks, and monthly plans.',
-                        'url' => '/projects/cinema-club-membership',
-                        'image' => 'https://picsum.photos/seed/cinema-club/460/260',
-                    ],
-                ];
-            @endphp
-
             <div class="projects-list-wrapper" data-projects-list data-page-size="5" aria-live="polite">
                 <ul class="projects-list" role="list">
-                    @foreach ($dummyProjects as $project)
+                    @foreach ($projects as $project)
                         <li class="project-item" data-project-item>
-                            <a class="project-image-link" href="{{ $project['url'] }}" aria-label="Open {{ $project['title'] }} project page">
-                                <img src="{{ $project['image'] }}" alt="{{ $project['title'] }} preview" loading="lazy">
+                            <a class="project-image-link" href="{{ route('project.show', ['id' => $project['id']]) }}" aria-label="Open {{ $project['title'] }} project page">
+                                <img src="{{ asset($project['thumbnail']) }}" alt="{{ $project['title'] }} preview" loading="lazy">
                             </a>
                             <div class="project-content">
-                                <a class="project-title" href="{{ $project['url'] }}">{{ $project['title'] }}</a>
+                                <a class="project-title" href="{{ route('project.show', ['id' => $project['id']]) }}">{{ $project['title'] }}</a>
                                 <p>{{ $project['description'] }}</p>
                             </div>
                         </li>
