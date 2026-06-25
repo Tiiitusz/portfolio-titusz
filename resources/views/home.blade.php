@@ -47,12 +47,12 @@
                     <a class="hero-button hero-button-secondary" href="/documents/cv.pdf" download>Download</a>
                 </div>
             </div>
-            <div class="pdf-window" role="group" aria-label="Embedded CV PDF">
-                <iframe
-                    src="/documents/cv.pdf#view=FitH"
-                    title="Curriculum Vitae PDF"
+            <div class="pdf-window" role="group" aria-label="CV preview image">
+                <img
+                    src="{{ asset('images/cv.jpg') }}"
+                    alt="Preview image of the curriculum vitae"
                     loading="lazy"
-                ></iframe>
+                >
             </div>
         </section>
 

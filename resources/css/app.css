@@ -4,11 +4,11 @@
     --scroll-progress: 0;
     --bg: #060816;
     --surface: rgba(10, 15, 34, 0.72);
-    --surface-strong: rgba(12, 18, 40, 0.88);
+    --surface-strong: rgba(12, 18, 40, 0.88A);
     --text: #f8fafc;
     --muted: #b4bfd6;
     --border: rgba(255, 255, 255, 0.14);
-    --accent: #7c3aed;
+    --accent: rgb(124, 58, 237);
     --accent-2: #22d3ee;
     --accent-3: #fb7185;
 }
@@ -283,7 +283,8 @@ main {
         linear-gradient(165deg, rgba(124, 58, 237, 0.14), transparent 48%);
 }
 
-.pdf-window iframe {
+.pdf-window iframe,
+.pdf-window img {
     position: relative;
     z-index: 1;
     width: 100%;
@@ -291,6 +292,11 @@ main {
     min-height: inherit;
     border: 0;
     display: block;
+}
+
+.pdf-window img {
+    object-fit: cover;
+    object-position: top center;
 }
 
 .stat-card {
