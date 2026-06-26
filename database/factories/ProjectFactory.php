@@ -12,8 +12,14 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         $imageUrls = [
-            fake()->imageUrl(1200, 800, 'business', true),
-            fake()->imageUrl(1200, 800, 'technology', true),
+            "example2.jpg",
+            "example3.jpg",
+            "example4.jpg",
+            "example4.jpg",
+            "example4.jpg",
+            "example4.jpg",
+            "example4.jpg",
+            "example4.jpg",
         ];
 
         $technologies = [
@@ -26,7 +32,7 @@ class ProjectFactory extends Factory
             'subtitle' => fake()->words(4, true),
             'description' => fake()->paragraph(),
             'images' => json_encode($imageUrls),
-            'thumbnail' => 'https://picsum.photos/seed/aurora-dashboard/460/260',
+            'thumbnail' => "example1.jpg",
             'github_url' => fake()->url(),
             'is_featured' => fake()->boolean(25),
             'technologies' => json_encode($technologies),

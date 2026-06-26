@@ -22,10 +22,10 @@ let boatX = -500;
 let lastTimestamp = 0;
 
 function animate(timestamp) {
+    let deltaTime = timestamp - lastTimestamp;
+    lastTimestamp = timestamp;
     if (boat) {
         maxX = window.innerWidth - boat.offsetWidth+500;
-        let deltaTime = timestamp - lastTimestamp;
-        lastTimestamp = timestamp;
         const XNeedsToBe = scrollProgress * Math.max(maxX, -500)-500;
         let deltaX = 0;
         let x = 0;

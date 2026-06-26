@@ -70,7 +70,7 @@
                     @foreach ($projects as $project)
                         <li class="project-item" data-project-item>
                             <a class="project-image-link" href="{{ route('project.show', ['id' => $project['id']]) }}" aria-label="Open {{ $project['title'] }} project page">
-                                <img src="{{ asset($project['thumbnail']) }}" alt="{{ $project['title'] }} preview" loading="lazy">
+                                <img src="{{ asset('images/' . $project['thumbnail']) }}" alt="{{ $project['title'] }} preview" loading="lazy">
                             </a>
                             <div class="project-content">
                                 <a class="project-title" href="{{ route('project.show', ['id' => $project['id']]) }}">{{ $project['title'] }}</a>
