@@ -7,6 +7,8 @@ export default defineConfig({
     plugins: [
         laravel({
             input: ['resources/css/app.css', 'resources/css/show.css', 'resources/js/app.js', 'resources/js/carousel.js'],
+            publicDirectory: '.',
+            buildDirectory: 'build',
             refresh: true,
             fonts: [
                 bunny('Instrument Sans', {
