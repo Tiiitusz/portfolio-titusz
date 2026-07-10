@@ -46,4 +46,14 @@ return [
     */
 
     'request_timeout' => env('OPENAI_REQUEST_TIMEOUT', 30),
+
+    /*
+    |--------------------------------------------------------------------------
+    | CA Bundle Path
+    |--------------------------------------------------------------------------
+    |
+    | Optional custom certificate authority bundle path for SSL verification.
+    | Useful on shared hosting where system CA store may be misconfigured.
+    */
+    'ca_bundle' => env('OPENAI_CA_BUNDLE'),
 ];
