@@ -51,14 +51,21 @@
     "file": "assets/instrument-sans-600-normal-DMks36a2.woff",
     "src": "_instrument-sans-600-normal-DMks36a2.woff"
   },
+  "images/balaton.png": {
+    "file": "assets/balaton-BVmiDbu2.png",
+    "src": "images/balaton.png"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-CaR1Cmwz.css",
+    "file": "assets/app-Bl45KsqN.css",
     "name": "app",
     "names": [
       "app.css"
     ],
     "src": "resources/css/app.css",
-    "isEntry": true
+    "isEntry": true,
+    "assets": [
+      "assets/balaton-BVmiDbu2.png"
+    ]
   },
   "resources/css/show.css": {
     "file": "assets/show-YKSK7uL2.css",
@@ -79,6 +86,12 @@
     "file": "assets/carousel-j_OQm3ND.js",
     "name": "carousel",
     "src": "resources/js/carousel.js",
+    "isEntry": true
+  },
+  "resources/js/chat.js": {
+    "file": "assets/chat-DXBIjN_g.js",
+    "name": "chat",
+    "src": "resources/js/chat.js",
     "isEntry": true
   }
 }

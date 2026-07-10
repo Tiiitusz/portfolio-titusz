@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\PortfolioController;
 
 Route::get('/', [PortfolioController::class, 'index']);
 Route::get('/project/{id}', [PortfolioController::class, 'show'])->name('project.show');
+Route::post('/chat', [ChatController::class, 'reply'])->name('chat.reply');
 
 Route::middleware('guest')->group(function () {
 	Route::get('/login', [AuthController::class, 'login'])->name('login');

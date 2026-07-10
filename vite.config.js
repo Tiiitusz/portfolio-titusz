@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/css/show.css', 'resources/js/app.js', 'resources/js/carousel.js'],
+            input: ['resources/css/app.css', 'resources/css/show.css', 'resources/js/app.js', 'resources/js/carousel.js', 'resources/js/chat.js'],
             publicDirectory: '.',
             buildDirectory: 'build',
             refresh: true,
