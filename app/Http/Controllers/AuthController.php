@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Services\ProjectSkillsSummaryService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -12,6 +13,10 @@ use Illuminate\View\View;
 
 class AuthController extends Controller
 {
+    public function __construct(private readonly ProjectSkillsSummaryService $skillsSummaryService)
+    {
+    }
+
     public function login(): View
     {
         return view('auth.login');
@@ -77,6 +82,8 @@ class AuthController extends Controller
             'is_featured' => $request->boolean('is_featured'),
         ]);
 
+        $this->skillsSummaryService->regenerateFile();
+
         return redirect()->route('admin.dashboard');
     }
 
@@ -102,6 +109,8 @@ class AuthController extends Controller
             'is_featured' => $request->boolean('is_featured'),
         ]);
 
+        $this->skillsSummaryService->regenerateFile();
+
         return redirect()->route('admin.dashboard');
     }
 
@@ -117,6 +126,8 @@ class AuthController extends Controller
         foreach ($imagesToCheck as $image) {
             $this->deleteStoredImageIfUnused($image);
         }
+
+        $this->skillsSummaryService->regenerateFile();
 
         return redirect()->route('admin.dashboard');
     }

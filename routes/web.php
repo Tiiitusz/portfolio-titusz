@@ -7,6 +7,7 @@ use App\Http\Controllers\PortfolioController;
 
 Route::get('/', [PortfolioController::class, 'index']);
 Route::get('/project/{id}', [PortfolioController::class, 'show'])->name('project.show');
+Route::get('/chat/diagnostic', [ChatController::class, 'diagnostic'])->name('chat.diagnostic');
 Route::post('/chat', [ChatController::class, 'reply'])->name('chat.reply');
 
 Route::middleware('guest')->group(function () {

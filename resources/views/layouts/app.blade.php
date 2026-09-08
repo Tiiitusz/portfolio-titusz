@@ -39,7 +39,10 @@
                     <span>&#x2022; Online</span>
                 </div>
             </div>
-            <button id="chat-close" aria-label="Close chat">&times;</button>
+            <div class="chat-header-actions">
+                <button id="chat-diagnostic" class="chat-diagnostic" type="button" aria-label="Run chat diagnostics">Diagnose</button>
+                <button id="chat-close" aria-label="Close chat">&times;</button>
+            </div>
         </div>
 
         <div class="chat-messages" id="chat-messages" role="log" aria-live="polite">

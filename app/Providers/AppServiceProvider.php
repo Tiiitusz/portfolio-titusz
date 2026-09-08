@@ -5,6 +5,7 @@ namespace App\Providers;
 use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
 use OpenAI;
+use OpenAI\Contracts\ClientContract;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(\OpenAI\Client::class, function () {
+        $this->app->singleton(ClientContract::class, function () {
             $caBundle = $this->resolveCaBundlePath();
 
             $httpClient = new Client([
@@ -29,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
                 ->withHttpClient($httpClient)
                 ->make();
         });
+
+            $this->app->alias(ClientContract::class, \OpenAI\Client::class);
     }
 
     /**
@@ -57,6 +60,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $caBundle = $this->resolveCaBundlePath();
+
+        if ($caBundle !== null) {
+            ini_set('curl.cainfo', $caBundle);
+            ini_set('openssl.cafile', $caBundle);
+            putenv("SSL_CERT_FILE={$caBundle}");
+        }
     }
 }
