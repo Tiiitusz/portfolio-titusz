@@ -9,7 +9,9 @@
                 <p class="eyebrow">Personal</p>
                 <h2>About Me</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    I'm a 24 year old freshly graduated Computer Scientist from ELTE living in Budapest. I'm currently looking for work and planning my next steps in education.
+                    My passion is in making software as efficent as possible, this is really usefull when talking about huge amounts of data needing to be processed and used, therefor I specialize in Neural Networks, AI, Data Science and Management.
+                    In my free time I like to compete in amature chess tournaments, develop and play videogames, playing cards and Sailing in the summer. 
                 </p>
 
                 <div class="hero-actions">
@@ -20,16 +22,16 @@
 
             <div class="hero-stats" aria-label="Skill highlights">
                 <div class="stat-card stat-accent">
-                    <span>Personal Information</span>
-                    <strong>CV</strong>
+                    <span>Skills</span>
+                    <strong>AI / Neural Network development and integration, Database management, Data science, Back-end Website development</strong>
                 </div>
                 <div class="stat-card">
-                    <span>Portfolio</span>
-                    <strong>My previous works</strong>
+                    <span>Interests</span>
+                    <strong>International trades, Politics</strong>
                 </div>
                 <div class="stat-card">
-                    <span>Free Time</span>
-                    <strong>Hobbies</strong>
+                    <span>Free Time and Hobbies</span>
+                    <strong>Sailing, Chess, Videogame development, Playing cards</strong>
                 </div>
             </div>
         </section>
@@ -40,7 +42,6 @@
                 <p class="eyebrow">Professional</p>
                 <h2>Curriculum Vitae</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
                 <div class="hero-actions">
                     <a class="hero-button hero-button-primary" href="/documents/cv.pdf" target="_blank" rel="noopener">Open Full PDF</a>
@@ -61,7 +62,7 @@
                 <p class="eyebrow">Professional</p>
                 <h2>Portfolio</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    My portfolio mainly consists of smaller university projects and some larger personal projects. Project source code not containing github links are either non public or can be found in the description.       
                 </p>
             </div>
 
@@ -93,11 +94,11 @@
                 <p class="eyebrow">Get In Touch</p>
                 <h2>Contact Me</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Feel free to contact me
                 </p>
 
                 <div class="hero-actions">
-                    <a class="hero-button hero-button-primary" href="mailto:hello@example.com">hello@example.com</a>
+                    <a class="hero-button hero-button-primary" href="mailto:papptituszpeter@gmail.com">papptituszpeter@gmail.com</a>
                     <a class="hero-button hero-button-secondary" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
                     <a class="hero-button hero-button-secondary" href="https://github.com" target="_blank" rel="noopener">GitHub</a>
                 </div>
@@ -106,7 +107,7 @@
             <div class="hero-stats" aria-label="Contact details">
                 <div class="stat-card">
                     <span>Email</span>
-                    <strong>hello@example.com</strong>
+                    <strong>papptituszpeter@gmail.com</strong>
                 </div>
                 <div class="stat-card">
                     <span>Location</span>
@@ -114,7 +115,7 @@
                 </div>
                 <div class="stat-card">
                     <span>Availability</span>
-                    <strong>Open for new projects</strong>
+                    <strong>Full-time, Part-time, Contract</strong>
                 </div>
             </div>
         </section>

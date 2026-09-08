@@ -224,7 +224,7 @@ footer {
         box-shadow 180ms ease,
         background 180ms ease,
         color 180ms ease;
-    max-width: 200px;
+    max-width: 300px;
 }
 
 .hero-button:hover {
