@@ -5,6 +5,7 @@
     $heading = $heading ?? 'Project';
     $backUrl = $backUrl ?? route('admin.dashboard');
     $currentImages = isset($project) ? (json_decode($project->images ?? '[]', true) ?: []) : [];
+    $projectFormId = $project ? 'admin-project-form-' . $project->id : 'admin-project-form-new';
 @endphp
 
 <section class="admin-page">
@@ -25,7 +26,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ $action }}" class="admin-form" enctype="multipart/form-data" data-project-form>
+        <form method="POST" action="{{ $action }}" class="admin-form" enctype="multipart/form-data" data-project-form id="{{ $projectFormId }}">
             @csrf
             @if (($method ?? 'POST') !== 'POST')
                 @method($method)
@@ -108,8 +109,18 @@
                 <input type="checkbox" name="is_featured" value="1" {{ old('is_featured', $project->is_featured ?? false) ? 'checked' : '' }}>
                 <span>Featured project</span>
             </label>
-
-            <button type="submit" class="hero-button hero-button-primary">{{ $buttonLabel }}</button>
         </form>
+
+        <div class="admin-form-footer {{ $project ? 'is-edit' : '' }}">
+            @if ($project)
+                <form method="POST" action="{{ route('admin.projects.destroy', $project) }}" class="admin-delete-form" onsubmit="return confirm('Delete this project permanently? This cannot be undone.');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="hero-button admin-delete-button">Delete Project</button>
+                </form>
+            @endif
+
+            <button type="submit" form="{{ $projectFormId }}" class="hero-button hero-button-primary">{{ $buttonLabel }}</button>
+        </div>
     </div>
 </section>

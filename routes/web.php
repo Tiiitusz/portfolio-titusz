@@ -21,5 +21,6 @@ Route::middleware('auth')->group(function () {
 	Route::post('/admin/projects/{project}/images', [AuthController::class, 'uploadProjectImages'])->name('admin.projects.images.store');
 	Route::get('/admin/projects/{project}/edit', [AuthController::class, 'editProject'])->name('admin.projects.edit');
 	Route::put('/admin/projects/{project}', [AuthController::class, 'updateProject'])->name('admin.projects.update');
+	Route::delete('/admin/projects/{project}', [AuthController::class, 'destroyProject'])->name('admin.projects.destroy');
 	Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

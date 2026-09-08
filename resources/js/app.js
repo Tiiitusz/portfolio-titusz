@@ -1,5 +1,102 @@
 import './projectPagination';
 
+const homeLayout = document.querySelector('.home-layout');
+
+if (homeLayout) {
+    const homePanels = Array.from(homeLayout.querySelectorAll('[data-home-panel]'));
+    const bubbles = Array.from(homeLayout.querySelectorAll('.home-bubble'));
+    let isInitialReveal = true;
+
+    homePanels.forEach((panel) => {
+        panel.classList.remove('is-visible');
+        panel.style.opacity = '0';
+        panel.style.transform = 'translateY(26px)';
+        panel.style.filter = 'blur(3px)';
+        panel.style.transition = 'opacity 700ms ease, transform 700ms ease, filter 700ms ease';
+    });
+
+    const clearBubbleHover = () => {
+        bubbles.forEach((bubble) => bubble.classList.remove('is-hovered'));
+    };
+
+    homeLayout.addEventListener('pointermove', (event) => {
+        let activeBubble = null;
+        let closestDistance = Number.POSITIVE_INFINITY;
+
+        bubbles.forEach((bubble) => {
+            const rect = bubble.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const distance = Math.hypot(event.clientX - centerX, event.clientY - centerY);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                activeBubble = bubble;
+            }
+        });
+
+        clearBubbleHover();
+
+        if (activeBubble && closestDistance < 180) {
+            activeBubble.classList.add('is-hovered');
+        }
+    });
+
+    homeLayout.addEventListener('pointerleave', clearBubbleHover);
+
+    const showPanel = (panel) => {
+        panel.classList.add('is-visible');
+        panel.style.opacity = '1';
+        panel.style.transform = 'translateY(0)';
+        panel.style.filter = 'blur(0)';
+    };
+
+    const isPanelInView = (panel) => {
+        const rect = panel.getBoundingClientRect();
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        const revealLine = viewportHeight * 0.88;
+        return rect.top <= revealLine && rect.bottom >= 0;
+    };
+
+    const revealVisiblePanels = () => {
+        let revealOffset = 0;
+
+        homePanels.forEach((panel) => {
+            if (panel.classList.contains('is-visible')) {
+                return;
+            }
+
+            if (!isPanelInView(panel)) {
+                return;
+            }
+
+            const delay = isInitialReveal ? 220 + revealOffset : revealOffset;
+            panel.style.transitionDelay = `${delay}ms`;
+            showPanel(panel);
+            revealOffset += 90;
+        });
+
+        if (isInitialReveal) {
+            isInitialReveal = false;
+        }
+
+        const allPanelsVisible = homePanels.every((panel) => panel.classList.contains('is-visible'));
+
+        if (allPanelsVisible) {
+            window.removeEventListener('scroll', revealVisiblePanels);
+            window.removeEventListener('resize', revealVisiblePanels);
+        }
+    };
+
+    window.addEventListener('scroll', revealVisiblePanels, { passive: true });
+    window.addEventListener('resize', revealVisiblePanels);
+    homeLayout.classList.add('is-ready');
+
+    // Force layout once so hidden state applies before visible classes are added.
+    void homeLayout.offsetHeight;
+    revealVisiblePanels();
+}
+
 const projectForm = document.querySelector('[data-project-form]');
 
 if (projectForm) {

@@ -3,8 +3,9 @@
 @section('title', 'Home')
 
 @section('content')
-    <div class="main-inner">
-        <section class="content-card hero-card">
+    <div class="main-inner home-layout">
+
+        <section class="content-card hero-card home-hero-card" data-home-panel>
             <div class="hero-copy">
                 <p class="eyebrow">Personal</p>
                 <h2>About Me</h2>
@@ -37,7 +38,7 @@
         </section>
 
 
-        <section class="content-card pdf-card" id="cv">
+        <section class="content-card pdf-card home-cv-card" id="cv" data-home-panel>
             <div class="hero-copy">
                 <p class="eyebrow">Professional</p>
                 <h2>Curriculum Vitae</h2>
@@ -57,7 +58,7 @@
             </div>
         </section>
 
-        <section class="content-card" id="projects">
+        <section class="content-card home-projects-card" id="projects" data-home-panel>
             <div class="hero-copy">
                 <p class="eyebrow">Professional</p>
                 <h2>Portfolio</h2>
@@ -89,7 +90,7 @@
             </div>
         </section>
 
-        <section class="content-card hero-card" id="contact">
+        <section class="content-card hero-card home-contact-card" id="contact" data-home-panel>
             <div class="hero-copy">
                 <p class="eyebrow">Get In Touch</p>
                 <h2>Contact Me</h2>

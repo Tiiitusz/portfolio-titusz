@@ -105,11 +105,32 @@ class AuthController extends Controller
         return redirect()->route('admin.dashboard');
     }
 
+    public function destroyProject(Project $project): RedirectResponse
+    {
+        $thumbnail = $project->thumbnail;
+        $galleryImages = json_decode($project->images ?? '[]', true) ?: [];
+
+        $project->delete();
+
+        $imagesToCheck = array_values(array_unique(array_filter(array_merge([$thumbnail], $galleryImages))));
+
+        foreach ($imagesToCheck as $image) {
+            $this->deleteStoredImageIfUnused($image);
+        }
+
+        return redirect()->route('admin.dashboard');
+    }
+
     public function uploadProjectImages(Request $request, Project $project)
     {
+        $maxImageKb = $this->maxImageUploadKilobytes();
+
         $request->validate([
             'images' => ['required', 'array', 'min:1'],
-            'images.*' => ['file', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:5120'],
+            'images.*' => ['file', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:'.$maxImageKb],
+        ], [
+            'images.*.uploaded' => 'One of the selected images failed to upload. The current server limit is '.$maxImageKb.' KB per image.',
+            'images.*.max' => 'Each image must be '.$maxImageKb.' KB or smaller.',
         ]);
 
         $existingImages = json_decode($project->images ?? '[]', true) ?: [];
@@ -137,17 +158,54 @@ class AuthController extends Controller
 
     private function validateProject(Request $request, bool $isUpdate): array
     {
+        $maxImageKb = $this->maxImageUploadKilobytes();
+
         return $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'subtitle' => ['nullable', 'string', 'max:255'],
             'description' => ['required', 'string'],
-            'thumbnail' => array_merge($isUpdate ? ['nullable'] : ['required'], ['file', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:5120']),
+            'thumbnail' => array_merge($isUpdate ? ['nullable'] : ['required'], ['file', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:'.$maxImageKb]),
             'github_url' => ['nullable', 'url', 'max:255'],
             'technologies' => ['nullable', 'string'],
             'images' => ['nullable', 'array'],
-            'images.*' => ['file', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:5120'],
+            'images.*' => ['file', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:'.$maxImageKb],
             'is_featured' => ['nullable', 'boolean'],
+        ], [
+            'thumbnail.uploaded' => 'Thumbnail upload failed. The current server limit is '.$maxImageKb.' KB.',
+            'thumbnail.max' => 'Thumbnail must be '.$maxImageKb.' KB or smaller.',
+            'images.*.uploaded' => 'One of the selected images failed to upload. The current server limit is '.$maxImageKb.' KB per image.',
+            'images.*.max' => 'Each image must be '.$maxImageKb.' KB or smaller.',
         ]);
+    }
+
+    private function maxImageUploadKilobytes(): int
+    {
+        $configuredKb = $this->iniSizeToKilobytes(ini_get('upload_max_filesize'));
+
+        if ($configuredKb <= 0) {
+            return 2048;
+        }
+
+        return $configuredKb;
+    }
+
+    private function iniSizeToKilobytes(string $size): int
+    {
+        $size = trim($size);
+
+        if ($size === '') {
+            return 0;
+        }
+
+        $unit = strtolower(substr($size, -1));
+        $value = (float) $size;
+
+        return match ($unit) {
+            'g' => (int) round($value * 1024 * 1024),
+            'm' => (int) round($value * 1024),
+            'k' => (int) round($value),
+            default => (int) round($value / 1024),
+        };
     }
 
     private function storeProjectFiles(Request $request, ?Project $project = null, array $removedImages = []): array
@@ -200,6 +258,18 @@ class AuthController extends Controller
 
         if (File::exists($path)) {
             File::delete($path);
+        }
+    }
+
+    private function deleteStoredImageIfUnused(string $filename): void
+    {
+        $isStillUsed = Project::query()
+            ->where('thumbnail', $filename)
+            ->orWhere('images', 'like', '%"'.$filename.'"%')
+            ->exists();
+
+        if (! $isStillUsed) {
+            $this->deleteStoredImage($filename);
         }
     }
 
