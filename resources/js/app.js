@@ -228,6 +228,7 @@ if (projectForm) {
 }
 
 const boat = document.querySelector('.balaton-boat');
+const boatEnabledQuery = window.matchMedia('(min-width: 1000px)');
 
 let scrollProgress = 0;
 
@@ -251,7 +252,7 @@ let lastTimestamp = 0;
 function animate(timestamp) {
     let deltaTime = timestamp - lastTimestamp;
     lastTimestamp = timestamp;
-    if (boat) {
+    if (boat && boatEnabledQuery.matches) {
         maxX = window.innerWidth - boat.offsetWidth+500;
         const XNeedsToBe = scrollProgress * Math.max(maxX, -500)-500;
         let deltaX = 0;
@@ -268,6 +269,8 @@ function animate(timestamp) {
         const y = Math.sin(timestamp / 900) * 6;
     
         boat.style.transform = `translate(${x}px, ${y}px)`;
+        } else if (boat) {
+            boat.style.transform = '';
     }
     requestAnimationFrame(animate);
 }

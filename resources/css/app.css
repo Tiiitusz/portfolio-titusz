@@ -40,7 +40,7 @@ body {
     pointer-events: none;
     z-index: 0;
     overflow: hidden;
-    background: url('/images/balaton.png') center / cover no-repeat;
+    background: url('/images/balaton.jpg') center / cover no-repeat;
 }
 
 .title-text {
@@ -1112,6 +1112,10 @@ footer {
 }
 
 @media (max-width: 900px) {
+    .balaton-boat {
+        display: none;
+    }
+    
     .admin-project {
         grid-template-columns: 1fr;
     }
