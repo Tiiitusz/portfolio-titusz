@@ -51,12 +51,12 @@
     "file": "assets/instrument-sans-600-normal-DMks36a2.woff",
     "src": "_instrument-sans-600-normal-DMks36a2.woff"
   },
-  "images/balaton.png": {
-    "file": "assets/balaton-BVmiDbu2.png",
-    "src": "images/balaton.png"
+  "images/balaton.jpg": {
+    "file": "assets/balaton-E6Be16b6.jpg",
+    "src": "images/balaton.jpg"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DesKJrl0.css",
+    "file": "assets/app-9MdBQKFc.css",
     "name": "app",
     "names": [
       "app.css"
@@ -64,7 +64,7 @@
     "src": "resources/css/app.css",
     "isEntry": true,
     "assets": [
-      "assets/balaton-BVmiDbu2.png"
+      "assets/balaton-E6Be16b6.jpg"
     ]
   },
   "resources/css/show.css": {
@@ -77,7 +77,7 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CVtltwak.js",
+    "file": "assets/app-CxW-Vg7d.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
@@ -89,7 +89,7 @@
     "isEntry": true
   },
   "resources/js/chat.js": {
-    "file": "assets/chat-Cz6RTcmS.js",
+    "file": "assets/chat-DkLOusiN.js",
     "name": "chat",
     "src": "resources/js/chat.js",
     "isEntry": true
