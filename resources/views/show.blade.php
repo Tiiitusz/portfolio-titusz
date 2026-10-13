@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $project->title)
+@section('title', 'Titusz - ' . $project->title)
 
 @push('styles')
     @vite(['resources/css/show.css'])

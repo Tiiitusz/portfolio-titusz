@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Titusz - Hire me!')
 
 @section('content')
     <div class="main-inner home-layout">
@@ -100,8 +100,8 @@
 
                 <div class="hero-actions">
                     <a class="hero-button hero-button-primary" href="mailto:papptituszpeter@gmail.com">papptituszpeter@gmail.com</a>
-                    <a class="hero-button hero-button-secondary" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-                    <a class="hero-button hero-button-secondary" href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+                    <a class="hero-button hero-button-secondary" href="https://www.linkedin.com/in/papp-titusz-b59b3a384" target="_blank" rel="noopener">LinkedIn</a>
+                    <a class="hero-button hero-button-secondary" href="https://github.com/Tiiitusz" target="_blank" rel="noopener">GitHub</a>
                 </div>
             </div>
 
